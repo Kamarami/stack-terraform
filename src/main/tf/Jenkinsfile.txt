@@ -34,6 +34,6 @@ pipeline {
     }
 }
 def getTerraformPath(){
-    def tfHome= tool name: 'terraform-stack', type: 'terraform'
+    def tfHome= tool name: 'stackterraform', type: 'terraform'
     return tfHome
 }
