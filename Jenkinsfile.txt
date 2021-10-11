@@ -10,7 +10,7 @@ pipeline {
                 sh "terraform init"
             }
         }
-        stage('terraform plan'){
+        /*stage('terraform plan'){
             steps {
                 //sh "returnStatus: true, script: 'terraform workspace new dev'"
                 //sh "terraform apply -auto-approve"
@@ -30,7 +30,7 @@ pipeline {
                 //sh "terraform apply -auto-approve"
                 sh "terraform apply -input=false tfplan"
             }
-        }
+        }*/
     }
 }
 def getTerraformPath(){
