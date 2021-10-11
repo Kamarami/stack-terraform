@@ -38,4 +38,4 @@ pipeline {
 def getTerraformPath(){
     def tfHome= tool name: 'terraform-stack', type: 'terraform'
     return tfHome
-}
+} //test
