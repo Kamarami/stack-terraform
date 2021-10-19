@@ -1,15 +1,8 @@
-resource "aws_efs_file_system" "EFS-mount" {
-  tags = {
-    Name = "EFS-mount"
-  }
-}
-
 terraform{
   backend "s3"{
-    bucket= "stackbuckstatemohamed"
+    bucket= "stackbuckstatemohamed1"
     key = "terraform.tfstate"
-    region= "us-east-1"
+    region="us-east-1"
     dynamodb_table="statelock-tf"
   }
 }
-
