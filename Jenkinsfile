@@ -11,7 +11,9 @@ pipeline {
             }
         }
         stage('terraform plan'){
-            steps{
+            steps {
+                //sh "returnStatus: true, script: 'terraform workspace new dev'"
+                //sh "terraform apply -auto-approve"
                 sh "terraform plan -out=tfplan -input=false"
             }
         }
@@ -22,16 +24,16 @@ pipeline {
                 }
             }
         }
-        stage('Terraform Apply'{
+        stage('Terraform Apply'){
             steps {
+                //sh "returnStatus: true, script: 'terraform workspace new dev'"
+                //sh "terraform apply -auto-approve"
                 sh "terraform apply -input=false tfplan"
             }
         }
     }
 }
-
-
 def getTerraformPath(){
-    def tfHome= tool name: 'terraform-14', type: 'terraform'
+    def tfHome= tool name: 'terraform-stack', type: 'terraform'
     return tfHome
 }
