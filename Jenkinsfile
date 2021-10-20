@@ -8,11 +8,28 @@ pipeline {
             steps {
                 //sh "returnStatus: true, script: 'terraform workspace new dev'"
                 sh "terraform init"
-                sh "terraform apply -auto-approve"
+            }
+        }
+        stage('terraform plan'){
+            steps{
+                sh "terraform plan -out=tfplan -input=false"
+            }
+        }
+        stage('Final Deployment Approval'){
+            steps {
+                script {
+                    def userInput = input(id: 'confirm', message: 'Apply Terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Apply terraform', name: 'confirm'] ])
+                }
+            }
+        }
+        stage('Terraform Apply'{
+            steps {
+                sh "terraform apply -input=false tfplan"
             }
         }
     }
 }
+
 
 def getTerraformPath(){
     def tfHome= tool name: 'terraform-14', type: 'terraform'
