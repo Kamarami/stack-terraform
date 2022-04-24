@@ -1,3 +1,4 @@
+#Initialize the backend and use s3 to store statefile
 terraform{
   backend "s3"{
     bucket= "stackbuckstatemohamed2"
@@ -7,3 +8,6 @@ terraform{
     profile = "default"
   }
 }
+#Create EC2 instance
+#Create EFS
+#Mount EFS to EC2 instance
